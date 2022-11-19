@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+
+.post{
+  font-size: large;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 50px auto auto auto;
+
+  width: 50vw;
+  height: 100px;
+  padding: 10px;
+
+  background-color:rgb(103, 201, 155);
+
+  border: 1px solid black;
+  border-radius: 35px;  
+}
+
+.post .title {
+  font-size: larger;
+  margin-bottom: 8px;
+}
+
+.post .user {
+  margin-top: 15px;
+}
