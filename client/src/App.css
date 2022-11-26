@@ -1,32 +1,57 @@
 .App {
-  text-align: center;
+  width: 100vw;
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  flex-direction: column;
 }
 
-.post{
-  font-size: large;
-  
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.post {
+  width: 400px;
+  height: 300px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  margin: 50px auto auto auto;
+  margin-top: 50px;
+  border: 1px solid lightgray;
+  font-family: Arial, Helvetica, sans-serif;
 
-  width: 50vw;
-  height: 100px;
-  padding: 10px;
-
-  background-color:rgb(103, 201, 155);
-
-  border: 1px solid black;
-  border-radius: 35px;  
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
+.post:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+}
 .post .title {
-  font-size: larger;
-  margin-bottom: 8px;
+  flex: 20%;
+  border-bottom: 1px solid lightgray;
+  background-color: dodgerblue;
+  display: grid;
+  place-content: center;
+  color: white;
 }
 
-.post .user {
-  margin-top: 15px;
+.post .body {
+  flex: 60%;
+  display: grid;
+  place-content: center;
+}
+
+.post .footer {
+  flex: 20%;
+  border-top: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  background-color: dodgerblue;
+  color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }

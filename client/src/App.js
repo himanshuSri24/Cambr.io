@@ -1,27 +1,20 @@
-import './App.css';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import "./App.css";
+import React from "react"
+import Home from "./pages/Home"
+import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
 
 function App() {
   
-  const [listOfPosts, setListOfPosts] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://192.168.1.50:3001/posts").then((response)=>{
-      setListOfPosts(response.data)
-    })
-  }, [])
-  
   return (
-    
     <div className="App">
-      {listOfPosts.map((value, key) => {
-        return <div className='post'>
-          <div className='title'>{value.title}</div>
-          <div className='text'>{value.postText}</div>
-          <div className='user'>{value.username}</div>
-          </div>
-      })}
+      Hello
+      <Router>
+      <Link to='/'>Home</Link>
+        <Link to='/createpost'>CreatePost</Link>
+        <Routes>
+          <Route path='/' element = {<Home/>}></Route>
+        </Routes>
+      </Router>
     </div>
   );
 }
