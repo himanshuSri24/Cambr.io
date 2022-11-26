@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react"
 import Home from "./pages/Home"
+import CreatePost from "./pages/CreatePost"
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Link to='/createpost'>CreatePost</Link>
         <Routes>
           <Route path='/' element = {<Home/>}></Route>
+          <Route path='/createpost' element = {<CreatePost/>}></Route>
         </Routes>
       </Router>
     </div>
