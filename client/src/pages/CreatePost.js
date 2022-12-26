@@ -1,52 +1,63 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function CreatePost() {
+  let history = useNavigate();
   const initialValues = {
     title: "",
     postText: "",
     username: "",
   };
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required(),
+    title: Yup.string().required("You must input a Title!"),
     postText: Yup.string().required(),
-    username: Yup.string().min(3).max(20).required(),
+    username: Yup.string().min(3).max(15).required(),
   });
+
+  const onSubmit = (data) => {
+    axios.post("http://localhost:3001/posts", data).then((response) => {
+      history.push("/");
+    });
+  };
 
   return (
     <div className="createPostPage">
-      <Formik>
-        <Form
-          className="formContainer"
-          initialValues={initialValues}
-          onSubmit={onSubmit}
-          validationSchema={validationSchema}
-        >
-          <label>Title : </label>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+      >
+        <Form className="formContainer">
+          <label>Title: </label>
+          <ErrorMessage name="title" component="span" />
           <Field
+            autocomplete="off"
             id="inputCreatePost"
             name="title"
-            placeholder="John (for eg.)"
+            placeholder="(Ex. Title...)"
           />
-          <label>Post : </label>
+          <label>Post: </label>
+          <ErrorMessage name="postText" component="span" />
           <Field
+            autocomplete="off"
             id="inputCreatePost"
             name="postText"
-            placeholder="lmao (for eg.)"
+            placeholder="(Ex. Post...)"
           />
-          <label>Username : </label>
+          <label>Username: </label>
+          <ErrorMessage name="username" component="span" />
           <Field
+            autocomplete="off"
             id="inputCreatePost"
             name="username"
-            placeholder="John123 (for eg.)"
+            placeholder="(Ex. John123...)"
           />
-          <button type="submit">Create Post</button>
+
+          <button type="submit"> Create Post</button>
         </Form>
       </Formik>
     </div>
