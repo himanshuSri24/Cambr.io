@@ -19,17 +19,27 @@ function Post() {
   }, [id]);
 
   const addComment = () => {
+    if(newComment.length !== 0){
     axios
-      .post("http://localhost:3001/comments", {
-        commentBody: newComment,
-        PostId: id,
-      })
-      .then((response) => {
-        const commentToAdd = { commentBody: newComment };
-        setComments([...comments, commentToAdd]);
-        setNewComment("");
+      .post(
+        "http://localhost:3001/comments",
+        {
+          commentBody: newComment,
+          PostId: id,
+        },
+        {
+          headers: {accessToken: sessionStorage.getItem("accessToken")}
+        }).then((response) => {
+        if (response.data.error) {
+          alert('You need to be logged in');
+        } else {
+          const commentToAdd = { commentBody: newComment };
+          setComments([...comments, commentToAdd]);
+          setNewComment("");
+        }
       });
-  };
+  }
+};
 
   return (
     <div className="postPage">
