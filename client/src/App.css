@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  font-family: "Arial", sans-serif;
 }
 
 body {
@@ -31,6 +32,7 @@ body {
 .post .title {
   flex: 20%;
   border-bottom: 1px solid lightgray;
+
   background-color: dodgerblue;
   display: grid;
   place-content: center;
@@ -204,12 +206,29 @@ button {
 /* LOGIN */
 
 .loginContainer {
-  display: flex;
+      text-align: center;
+  /* display: flex;
   align-items: center;
   flex-direction: column;
   width: 100%;
   height: 100vh;
-  padding-top: 100px;
+  padding-top: 100px; */
+  margin: 20px auto;
+			padding: 10px;
+			width: 300px;
+			height: auto;
+			background-color: #fff;
+			border-radius: 5px;
+      border: 3px solid dodgerblue;
+}
+
+.loginContainer h1{
+  width: 70%;
+			color: #777;
+			font-size: 32px;
+			margin: 28px auto;
+			margin-bottom: 20px;
+			text-align: center;
 }
 
 .loginContainer input,
@@ -221,11 +240,22 @@ button {
   margin: 10px;
 }
 
+.loginContainer input{
+  padding: 12px 0;
+			margin-bottom: 10px;
+			border-radius: 3px;
+			border: 2px solid transparent;
+			text-align: center;
+			width: 90%;
+			font-size: 16px;
+			transition: border .2s, background-color .2s;
+}
+
 .loginContainer button {
   background-color: dodgerblue;
   color: white;
 }
 
 .loginContainer input {
-  border: 2px solid dodgerblue;
+  /* border: 2px solid dodgerblue; */
 }
