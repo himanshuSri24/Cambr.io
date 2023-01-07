@@ -10,6 +10,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #C7D9B7 ;
 }
 
 .logout {
@@ -26,7 +27,7 @@ body {
   margin-top: 50px;
   border: 1px solid lightgray;
   font-family: Arial, Helvetica, sans-serif;
-
+  background-color: #fff;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
@@ -38,7 +39,7 @@ body {
   flex: 20%;
   border-bottom: 1px solid lightgray;
 
-  background-color: dodgerblue;
+  background-color: #1E1B18;
   display: grid;
   place-content: center;
   color: white;
@@ -56,7 +57,7 @@ body {
   display: flex;
   align-items: center;
   padding-left: 15px;
-  background-color: dodgerblue;
+  background-color: #1E1B18;
   color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -72,14 +73,14 @@ body {
   justify-content: center;
   align-items: center;
 }
-.formContainer {
+/* .formContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 500px;
   height: auto;
   padding: 20px;
-  border: 5px solid dodgerblue;
+  border: 5px solid #1E1B18;
   border-radius: 5px;
 }
 
@@ -97,15 +98,15 @@ body {
   margin-top: 15px;
   height: 40px;
   border: none;
-  background-color: lightskyblue;
+  background-color: #1E1B18;
   border-radius: 5px;
   color: white;
 }
 
 .formContainer button:hover {
   cursor: pointer;
-  background-color: dodgerblue;
-}
+  background-color: #1E1B18;
+} */
 
 span {
   color: red;
@@ -116,7 +117,7 @@ span {
 .navbar {
   width: 100%;
   height: 70px;
-  background-color: dodgerblue;
+  background-color: #1E1B18;
   display: flex;
   align-items: center;
   font-family: Arial, Helvetica, sans-serif;
@@ -169,12 +170,12 @@ button {
 }
 
 .addCommentContainer button {
-  background-color: dodgerblue;
+  background-color: #1E1B18;
   color: white;
 }
 
 .addCommentContainer input {
-  border: 2px solid dodgerblue;
+  border: 2px solid #1E1B18;
 }
 
 .rightSide .listOfComments {
@@ -234,24 +235,18 @@ button {
 
 .loginContainer {
       text-align: center;
-  /* display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-  padding-top: 100px; */
-  margin: 20px auto;
+      margin: 50px auto;
 			padding: 10px;
 			width: 300px;
 			height: auto;
 			background-color: #fff;
 			border-radius: 5px;
-      border: 3px solid dodgerblue;
+      border: 3px solid #1E1B18;
 }
 
 .loginContainer h1{
   width: 70%;
-			color: #777;
+			color: #1E1B18;
 			font-size: 32px;
 			margin: 28px auto;
 			margin-bottom: 20px;
@@ -279,10 +274,56 @@ button {
 }
 
 .loginContainer button {
-  background-color: dodgerblue;
+  background-color: #1E1B18;
   color: white;
 }
 
 .loginContainer input {
-  /* border: 2px solid dodgerblue; */
+  /* border: 2px solid #1E1B18; */
+}
+
+/* Register page */
+.registerContainer {
+      text-align: center;
+      margin: 50px auto;
+			padding: 10px;
+			width: 300px;
+			height: auto;
+			background-color: #fff;
+			border-radius: 5px;
+      border: 3px solid #1E1B18;
+}
+
+.registerContainer h1{
+  width: 70%;
+			color: #1E1B18;
+			font-size: 32px;
+			margin: 28px auto;
+			margin-bottom: 20px;
+			text-align: center;
+}
+
+.registerContainer input,
+button {
+  width: 200px;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  margin: 10px;
+}
+
+.registerContainer input{
+  padding: 12px 0;
+			margin-bottom: 10px;
+			border-radius: 3px;
+			border: 2px solid transparent;
+			text-align: center;
+			width: 90%;
+			font-size: 16px;
+			transition: border .2s, background-color .2s;
+}
+
+.registerContainer button {
+  background-color: #1E1B18;
+  color: white;
 }
