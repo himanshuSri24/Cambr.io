@@ -48,10 +48,12 @@ function App() {
       <AuthContext.Provider value={{ authState, setAuthState }}>
       <Router>
         <div className = "navbar">
+          <img src="/logo.png" alt = 'CAMBRIO' id="logo"/>
+          <div>
           {authState.status && 
             <>
             <Link to='/'>Home</Link>
-            <Link to="/createpost"> Create A Post</Link>
+            <Link to="/createpost"> New Post</Link>
           </>
           }
           {!authState.status &&
@@ -60,6 +62,7 @@ function App() {
               <Link to="/register"> Register </Link>
             </>
           }
+          </div>
           {authState.status &&
           <button className="logout" onClick={logoutFunc}>Logout</button>
           }

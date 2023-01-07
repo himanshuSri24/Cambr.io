@@ -1,66 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
 .App {
-  width: 100vw;
+  width: 100%;
   height: auto;
   display: flex;
   align-items: center;
   flex-direction: column;
-  font-family: "Arial", sans-serif;
+  font-family: 'Josefin Sans', cursive;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #C7D9B7;
+  background-color: #0d1117;
 }
 
 .logout {
   position: absolute;
   right: 2%;
+  background-color: #22f1bf;
+  font-size: 20px;
+  font-weight: 600;
+  color: #0d1117;
+  width: 200px;
+  height: 45px;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .post {
   width: 400px;
-  height: 300px;
+  height: 250px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
-  border: 1px solid lightgray;
-  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 70px;
+  background-color: #21262d;
+  /* border: 1px solid lightgray; */
+  /* font-family: Arial, Helvetica, sans-serif; */
 
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 }
-
+/* 
 .post:hover {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   cursor: pointer;
-}
-.post .title {
+} */
+
+
+/* .post .title {
   flex: 20%;
-  border-bottom: 1px solid lightgray;
-
-  background-color: #1E1B18;
-  display: grid;
-  place-content: center;
-  color: white;
-}
-
-.post .body {
-  flex: 60%;
-  display: grid;
-  place-content: center;
-}
-
-.post .footer {
-  flex: 20%;
-  border-top: 1px solid lightgray;
+  border-top: 2px solid #0d1117;
   display: flex;
   align-items: center;
   padding-left: 15px;
-  background-color: #1E1B18;
-  color: white;
+  background-color: #21262d;
+  color: #7371ff;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+} */
+
+
+.post .body {
+  flex: 40%;
+  display: grid;
+  margin:0 5px 30px 5px;
+  padding-top: 50px;
+  padding-left: 30px;
+  place-content: start;
+  background-color: #21262d;
+  color: #fff;
+  font-size: 20px;
+}
+
+.post .dateTime {
+  color: #fff;
+  padding-bottom: 20px;
+  margin-left: 70%;
+}
+
+.post .footer {
+  flex: 30%;
+  border-bottom: 2px solid #0d1117; 
+  
+  background-color: #21262d;
+  display: grid;
+  padding-left: 40px;
+  place-content: center start;
+  color: #7371ff;
+  font-size: 27px;
+  font-weight: 700;
 }
 
 /* CREATE POST PAGE CSS */
@@ -116,17 +148,33 @@ span {
 
 .navbar {
   width: 100%;
-  height: 70px;
-  background-color: #1E1B18;
+  height: 100px;
+  background-color: #0d1117;
   display: flex;
   align-items: center;
-  font-family: Arial, Helvetica, sans-serif;
+  position: sticky;
+  top: 0;
+}
+
+#logo {
+  height: 100px;
+  width: auto;
+  margin-right: 50px;
+}
+
+.navbar div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-right: 150px;
 }
 
 .navbar a {
-  margin-left: 20px;
+  margin-left: 50px;
   text-decoration: none;
-  color: white;
+  font-size: 23px;
+  color: #7371ff;
+  font-weight: 700;
 }
 
 /* INDIVIDUAL POST */
@@ -235,24 +283,17 @@ button {
 
 .loginContainer {
       text-align: center;
-  /* display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-  padding-top: 100px; */
-  margin: 20px auto;
+      margin: 20px auto;
 			padding: 10px;
 			width: 300px;
 			height: auto;
-			background-color: #fff;
+			background-color: #21262d;
 			border-radius: 5px;
-      border: 3px solid #1E1B18;
 }
 
 .loginContainer h1{
   width: 70%;
-			color: #777;
+			color: #7371ff;
 			font-size: 32px;
 			margin: 28px auto;
 			margin-bottom: 20px;
@@ -273,15 +314,19 @@ button {
 			margin-bottom: 10px;
 			border-radius: 3px;
 			border: 2px solid transparent;
+      background-color: #0d1117;
+      color: #FFFFFF;
 			text-align: center;
 			width: 90%;
 			font-size: 16px;
-			transition: border .2s, background-color .2s;
+			/* transition: border .2s, background-color .2s; */
 }
 
 .loginContainer button {
-  background-color: #1E1B18;
-  color: white;
+  background-color: #22f1bf;
+  color: #0d1117;
+  font-size: medium;
+  font-weight: 600;
 }
 
 .loginContainer input {
