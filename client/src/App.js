@@ -16,11 +16,17 @@ function App() {
     id: 0,
     status: false,
   });
-  
+
+
   const logoutFunc = () => {
     localStorage.removeItem("accessToken");
     setAuthState({ username: "", id: 0, status: false });
+    
+    if(window.location.pathname !== '/login' && window.location.pathname !== '/register' ){
+      window.location.replace('/login')
+    }
   }
+
 
   useEffect(() => {
     axios.get("http://localhost:3001/auth/checkLogin", {headers: {accessToken: localStorage.getItem("accessToken"),},})
@@ -35,15 +41,19 @@ function App() {
           });
         }
       });
-  }, [authState]);
+  }, []);
 
   return (
     <div className="App">
       <AuthContext.Provider value={{ authState, setAuthState }}>
       <Router>
         <div className = "navbar">
-          <Link to='/'>Home</Link>
-          <Link to="/createpost"> Create A Post</Link>
+          {authState.status && 
+            <>
+            <Link to='/'>Home</Link>
+            <Link to="/createpost"> Create A Post</Link>
+          </>
+          }
           {!authState.status &&
             <>
               <Link to="/login"> Login </Link>
