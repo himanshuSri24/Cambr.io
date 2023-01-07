@@ -19,8 +19,12 @@ function Home() {
             <div className="title"> {value.title} </div>
             <div className="body">{value.postText}</div>
             <div className="footer">{value.username}</div>
-          </div>
+          </div>  
         );
+        <img
+        src="https://bobbyhadz.com/images/blog/react-prevent-multiple-button-clicks/thumbnail.webp"
+        alt="car"
+      />
       })}</div>
   )
 }
