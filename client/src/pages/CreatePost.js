@@ -19,9 +19,18 @@ function CreatePost() {
   });
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/posts", data).then((response) => {
+    if(data.postText.length !== 0){
+      axios.post("http://localhost:3001/posts", data, {
+        headers: {accessToken: localStorage.getItem("accessToken")}
+      }).then((response) => {
+        if(response.data.error){
+          alert('You need to be logged in to make a new post!')
+        }else{
       history("/");
-    });
+      }});
+    }else{
+      alert('Empty Post body')
+    }
   };
 
   return (

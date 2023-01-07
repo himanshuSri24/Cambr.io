@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { Users } = require("../models");
 const bcrypt = require("bcrypt");
-const {sign} = require('jsonwebtoken')
+const { validateToken } = require("../middleware/AuthMiddleware");
+const { sign } = require("jsonwebtoken");
 
 router.post("/", async (req, res) => {
   const { username, password } = req.body;
@@ -15,22 +16,28 @@ router.post("/", async (req, res) => {
   });
 });
 
-router.post("/login",async (req,res)=>{
-  const {username,password} = req.body;
-  const user=await Users.findOne({ where : {username : username }});
-
-  if (user)
-  bcrypt.compare(password, user.password).then((match) => {
-    if (!match)
-      res.json({ error: 'Wrong Username and Password combination' });
-    else {
-      const accessToken = sign({username : user.username, id : user.id}, "thisisasecurekey")
-      res.json(accessToken);
-    }
-  });
-  else{
-      res.json({ error: "User dosen't exist"})
-  }
+router.get("/checkLogin", validateToken, (req, res) => {
+  res.json(req.user);
 });
+
+router.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+
+  const user = await Users.findOne({ where: { username: username } });
+
+  if (!user) res.json({ error: "User Doesn't Exist" });
+
+  bcrypt.compare(password, user.password).then(async (match) => {
+    if (!match) res.json({ error: "Wrong Username And Password Combination" });
+
+    const accessToken = sign(
+      { username: user.username, id: user.id },
+      "thisisasecurekey"
+    );
+    res.json({ token: accessToken, username: username, id: user.id });
+  });
+});
+
+
 
 module.exports = router;
