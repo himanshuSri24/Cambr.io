@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+
+import { AuthContext } from "../helpers/AuthContext";
 
 function Post() {
   let { id } = useParams();
   const [postObject, setPostObject] = useState({});
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
+  const { authState } = useContext(AuthContext);
 
+  
   useEffect(() => {
     axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);
@@ -20,25 +24,43 @@ function Post() {
 
   const addComment = () => {
     if(newComment.length !== 0){
-    axios
-      .post(
-        "http://localhost:3001/comments",
+    axios.post("http://localhost:3001/comments",
         {
           commentBody: newComment,
           PostId: id,
         },
         {
-          headers: {accessToken: sessionStorage.getItem("accessToken")}
+          headers: {accessToken: localStorage.getItem("accessToken")}
         }).then((response) => {
-        if (response.data.error) {
-          alert('You need to be logged in');
-        } else {
-          const commentToAdd = { commentBody: newComment };
-          setComments([...comments, commentToAdd]);
-          setNewComment("");
-        }
-      });
+          if (response.data.error) {
+            alert('You need to be logged in ')
+          } else {
+            const commentToAdd = {
+              commentBody: response.data.commentBody,
+              username: response.data.username,
+              id: response.data.id,
+            };
+            setComments([...comments, commentToAdd]);
+            setNewComment("");
+          }
+        });
+  }else{
+    alert('Empty comment body')
   }
+};
+
+const deleteComment = (id) => {
+  axios
+    .delete(`http://localhost:3001/comments/${id}`, {
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    })
+    .then(() => {
+      setComments(
+        comments.filter((val) => {
+          return val.id != id;
+        })
+      );
+    });
 };
 
   return (
@@ -67,7 +89,14 @@ function Post() {
           {comments.map((comment, key) => {
             return (
               <div key={key} className="comment">
-                {comment.commentBody}
+                <div className="commentInside">
+                  {comment.commentBody}
+                  <br/>
+                  <label>{comment.username}</label>
+                </div>
+                {authState.username === comment.username &&
+                <button className="delComment" onClick={() => {deleteComment(comment.id)}}>X</button>
+                }
               </div>
             );
           })}
