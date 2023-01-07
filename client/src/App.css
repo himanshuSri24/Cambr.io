@@ -43,7 +43,7 @@ body {
   /* border: 1px solid lightgray; */
   /* font-family: Arial, Helvetica, sans-serif; */
 
-  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+  box-shadow: rgba(255, 255, 255, 0.289) 3px 3px 1px 0px;
 }
 /* 
 .post:hover {
@@ -202,7 +202,8 @@ span {
   flex: 50%;
   height: calc(100vh - 70px);
   display: grid;
-  place-items: center;
+  margin-top: 90px;
+  margin-left: 50px;
 }
 
 .rightSide {
@@ -215,11 +216,17 @@ span {
 }
 
 .rightSide .addCommentContainer {
-  flex: 20%;
-  width: 100%;
-  display: grid;
-  place-items: center;
-  margin-top: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  margin: 85px auto;
+  margin-bottom: 0;
+	width: 500px;
+	height: 100px;
+	background-color: #21262d;
+	border-radius: 5px;
+  box-shadow: rgba(255, 255, 255, 0.289) 3px 3px 1px 0px;
 }
 
 .addCommentContainer input,
@@ -228,23 +235,38 @@ button {
   height: 50px;
   border-radius: 8px;
   border: none;
+  margin: 10px;
 }
 
 .addCommentContainer button {
-  background-color: #1E1B18;
-  color: white;
+  background-color: #22f1bf;
+  color: #0d1117;
+  font-size: medium;
+  font-weight: 600;
+  margin-top: 20px;
 }
 
 .addCommentContainer input {
-  border: 2px solid #1E1B18;
+  /* padding: 12px 0 12px 10px; */
+			margin: 20px;
+      word-wrap: normal;
+      height: auto;
+			border-radius: 3px;
+			border: 2px solid transparent;
+      background-color: #0d1117;
+      color: #FFFFFF;
+			text-align: center;
+			width: 90%;
+			font-size: 16px;
 }
 
 .rightSide .listOfComments {
-  flex: 80%;
+  /* flex: 80%; */
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
+  padding-bottom: 50px;
 }
 
 .listOfComments .comment {
@@ -254,22 +276,32 @@ button {
   border: 1px solid lightgray;
   border-radius: 5px;
   margin-top: 20px;
-
-  display: flex
+  box-shadow: rgba(255, 255, 255, 0.289) 3px 3px 1px 0px;
+  display: flex;
+  background-color: #21262d;
 }
 
 .listOfComments .comment .commentInside {
   width: 100%;
   height: 100%;
   padding-top: 8px;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
+  color: #fff;
+  background-color: #21262d;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* background-color: #22f1bf; */
 }
 
-.listOfComments .comment label {
+
+.listOfComments .comment .commentInside label {
   font-size: smaller;
   font-weight: bold;
   color: royalblue;
+  margin-left: 0;
+  padding-top: 5px;
 }
 
 .listOfComments .comment button {
@@ -279,7 +311,8 @@ button {
 }
 
 #individual {
-  height: 500px;
+  margin-top: 0;
+  height: 300px;
   width: 600px;
 }
 
@@ -302,6 +335,7 @@ button {
 			height: auto;
 			background-color: #21262d;
 			border-radius: 5px;
+      box-shadow: rgba(255, 255, 255, 0.289) 3px 3px 1px 0px;
 }
 
 .loginContainer h1{
@@ -354,6 +388,7 @@ button {
   height: auto;
   background-color: #21262d;
   border-radius: 5px;
+  box-shadow: rgba(255, 255, 255, 0.289) 3px 3px 1px 0px;
 }
 
 .registerContainer h1{

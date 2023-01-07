@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import GoToTop from "../GoToTop"
 
 import { AuthContext } from "../helpers/AuthContext";
 
@@ -67,16 +68,15 @@ const deleteComment = (id) => {
     <div className="postPage">
       <div className="leftSide">
         <div className="post" id="individual">
-          <div className="title"> {postObject.title} </div>
-          <div className="body">{postObject.postText}</div>
           <div className="footer">{postObject.username}</div>
+          <div className="body">{postObject.postText}</div>
         </div>
       </div>
       <div className="rightSide">
         <div className="addCommentContainer">
           <input
             type="text"
-            placeholder="Comment..."
+            placeholder="comment"
             autoComplete="off"
             value={newComment}
             onChange={(event) => {
@@ -102,7 +102,9 @@ const deleteComment = (id) => {
           })}
         </div>
       </div>
+      <GoToTop/>
     </div>
+    
   );
 }
 
