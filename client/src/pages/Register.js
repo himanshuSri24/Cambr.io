@@ -25,30 +25,31 @@ function Register() {
   };
 
   return (
-    <div>
+    <div className="registerContainer">
+      <h1>Register</h1>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
         <Form className="formContainer">
-          <label>Username: </label>
+          {/* <label>Username: </label> */}
           <ErrorMessage name="username" component="span" />
           <Field
             autocomplete="off"
             id="inputCreatePost"
             name="username"
-            placeholder="(Ex. John123...)"
+            placeholder="username"
           />
 
-          <label>Password: </label>
+          {/* <label>Password: </label> */}
           <ErrorMessage name="password" component="span" />
           <Field
             autocomplete="off"
             type="password"
             id="inputCreatePost"
             name="password"
-            placeholder="Your Password..."
+            placeholder="new password"
           />
 
           <button type="submit"> Register</button>

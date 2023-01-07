@@ -17,6 +17,7 @@ body {
 
 .logout {
   position: absolute;
+  top: -5px !important;
   right: 2%;
   background-color: #22f1bf;
   font-size: 20px;
@@ -98,14 +99,26 @@ body {
 /* CREATE POST PAGE CSS */
 
 .createPostPage {
-  font-family: Arial, Helvetica, sans-serif;
-  width: 100vw;
-  height: 70vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  text-align: center;
+  padding: 15px;
+  margin: 70px auto;
+  width: 300px;
+  height: auto;
+  background-color: #21262d;
+  border-radius: 5px;
 }
-.formContainer {
+
+.createPostPage h1{
+  width: 70%;
+    color: #7371ff;
+    font-size: 32px;
+    margin: 28px auto;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+/* .formContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -138,7 +151,7 @@ body {
 .formContainer button:hover {
   cursor: pointer;
   background-color: #1E1B18;
-}
+} */
 
 span {
   color: red;
@@ -166,7 +179,7 @@ span {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-right: 150px;
+  margin-right: 180px;
 }
 
 .navbar a {
@@ -283,8 +296,8 @@ button {
 
 .loginContainer {
       text-align: center;
-      margin: 20px auto;
-			padding: 10px;
+      padding: 15px;
+      margin: 70px auto;
 			width: 300px;
 			height: auto;
 			background-color: #21262d;
@@ -327,8 +340,58 @@ button {
   color: #0d1117;
   font-size: medium;
   font-weight: 600;
+  margin-top: 30px;
 }
 
-.loginContainer input {
-  /* border: 2px solid #1E1B18; */
+
+/* Register */
+
+.registerContainer {
+  text-align: center;
+  padding: 15px;
+  margin: 70px auto;
+  width: 300px;
+  height: auto;
+  background-color: #21262d;
+  border-radius: 5px;
+}
+
+.registerContainer h1{
+width: 70%;
+  color: #7371ff;
+  font-size: 32px;
+  margin: 28px auto;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#inputCreatePost,
+button {
+width: 200px;
+height: 50px;
+border-radius: 8px;
+border: none;
+margin: 10px;
+}
+
+#inputCreatePost{
+padding: 12px 0;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: 2px solid transparent;
+  background-color: #0d1117;
+  color: #FFFFFF;
+  text-align: center;
+  width: 90%;
+  font-size: 16px;
+  /* transition: border .2s, background-color .2s; */
+}
+
+button {
+background-color: #22f1bf;
+color: #0d1117;
+font-size: medium;
+font-weight: 600;
+margin-top: 30px;
+margin-bottom: 50px;
 }
