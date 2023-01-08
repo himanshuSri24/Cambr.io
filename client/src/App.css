@@ -25,6 +25,11 @@ body {
   color: #0d1117;
   width: 200px;
   height: 45px;
+  transition: 0.25s;
+}
+
+.logout:hover {
+  background-color: #c95959;
 }
 
 .postList {
@@ -199,7 +204,7 @@ span {
 }
 
 .leftSide {
-  flex: 50%;
+  /* flex: 50%; */
   height: calc(100vh - 70px);
   display: grid;
   margin-top: 90px;
@@ -214,9 +219,28 @@ span {
   color: #0d1117;
   font-size: medium;
   font-weight: 600;
-  background-color: rgba(201, 89, 89, 0.726);
-  margin-top: -130px;
+  background-color: #c95959b9;
   margin-left: 400px;
+  margin-top: -30px;
+  transition: 0.25s;
+}
+
+.leftSide button:hover {
+  margin-left: 150px;
+  width: 450px;
+  z-index: 20;
+  background-color: #c95959;
+}
+
+#editPost {
+  margin-top: -177.5px;
+  margin-left: 150px;
+  background-color: #22f1bf;
+  
+}
+
+#editPost:hover {
+  width: 450px;
 }
 
 .rightSide {
@@ -252,11 +276,22 @@ button {
 }
 
 .addCommentContainer button {
-  background-color: #22f1bf;
+  background-color: #22f1bfb9;
   color: #0d1117;
   font-size: medium;
   font-weight: 600;
   margin-top: 20px;
+  transition: 0.25s;
+}
+
+.addCommentContainer button:hover {
+  background-color: #22f1bf;
+}
+
+button:hover {
+  box-shadow: rgba(255, 255, 255, 0.289) 2px 2px 1px 0px;
+  cursor: pointer;
+  
 }
 
 .addCommentContainer input {
@@ -319,8 +354,21 @@ button {
 
 .listOfComments .comment button {
   margin: 0;
-  margin-right: 0;
-  background-color: rgba(201, 89, 89, 0.726);
+  width: 55px;
+  color: #0d1117;
+  margin-right: 5px;
+  background-color: #c95959b9;
+  transition: 0.25s;
+}
+
+.listOfComments .comment button:hover {
+  width: 115px;
+  z-index: 20;
+  background-color: #c95959;
+}
+
+.listOfComments .comment #editComment {
+  background-color: #22f1bf;
 }
 
 #individual {
@@ -336,6 +384,15 @@ button {
 
 #individual .body {
   font-size: 25px;
+  position: relative;
+}
+
+#individual .body #dateTime {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  right: 15px;
+  bottom: 0px;
 }
 
 /* LOGIN */

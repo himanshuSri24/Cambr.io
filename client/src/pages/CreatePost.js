@@ -8,12 +8,12 @@ function CreatePost() {
   let history = useNavigate();
   const initialValues = {
     postText: "",
-    username: "",
+    // username: "",
   };
 
   const validationSchema = Yup.object().shape({
     postText: Yup.string().required(),
-    username: Yup.string().min(3).max(15).required(),
+    // username: Yup.string().min(3).max(15).required(),
   });
 
   const onSubmit = (data) => {
@@ -50,13 +50,13 @@ function CreatePost() {
             placeholder="post text"
           />
           {/* <label>Username: </label> */}
-          <ErrorMessage name="username" component="span" />
+          {/* <ErrorMessage name="username" component="span" />
           <Field
             autocomplete="off"
             id="inputCreatePost"
             name="username"
             placeholder="username"
-          />
+          /> */}
 
           <button type="submit"> Create Post</button>
         </Form>
