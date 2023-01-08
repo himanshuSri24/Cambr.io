@@ -12,16 +12,53 @@ function Home() {
       setListOfPosts(response.data);
     });
   }, []);
+
+  const likeAPost = (postId) => {
+    axios
+      .post(
+        "http://localhost:3001/likes",
+        { PostId: postId },
+        { headers: { accessToken: localStorage.getItem("accessToken") } }
+      )
+      .then((response) => {
+        setListOfPosts(
+          listOfPosts.map((post) => {
+            if (post.id === postId) {
+              if (response.data.liked) {
+                // alert("Liked")
+                return { ...post, Likes: [...post.Likes, 0] };
+              } else {
+                const likesArray = post.Likes;
+                likesArray.pop();
+                // alert("Unliked")
+                return { ...post, Likes: likesArray };
+              }
+            } else {
+              return post;
+            }
+          })
+        );
+      });
+  };  
+
   return (
     <div className="postList">{listOfPosts.map((value, key) => {
        
       return (
+          <>
+          <div className="likeCountIcon">
+          <label> {value.Likes.length}</label>
+          <img className="likeIcon" src="/liked.png" alt=" " onClick={() => {likeAPost(value.id)}}/>
+          </div>
           <div className="post" onClick={() => {navigate(`/post/${value.id}`)}}>
             <div className="footer">{value.username}</div>
             <div className="body">{value.postText}</div>
             {/* <div className="title"> {value.title} </div> */}
             <div className="dateTime">{value.createdAt.substring(8,10)} - {value.createdAt.substring(5,7)} - {value.createdAt.substring(0,4)}</div>
           </div>
+          
+          </>
+          
         );
       })}</div>
   )

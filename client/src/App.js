@@ -44,7 +44,7 @@ function App() {
           });
         }
       });
-  }, []);
+  }, [authState]);
 
   return (
     <div className="App">

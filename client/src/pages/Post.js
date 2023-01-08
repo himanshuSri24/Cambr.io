@@ -11,12 +11,11 @@ function Post() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const { authState } = useContext(AuthContext);
-
   
   useEffect(() => {
     axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);
-      console.log(postObject.createdAt)
+      console.log(response.data);
     });
 
     axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
@@ -76,13 +75,14 @@ const deletePost = (id) => {
     });
 };
 
+
   return (
     <div className="postPage">
       <div className="leftSide">
         <div className="post" id="individual">
           <div className="footer">{postObject.username}</div>
           <div className="body">{postObject.postText}
-          <div id="dateTime">{postObject.createdAt.substring(8,10)} - {postObject.createdAt.substring(5,7)} - {postObject.createdAt.substring(0,4)}</div>
+          {/* <div id="dateTime">{postObject.createdAt.substring(8,10)} - {postObject.createdAt.substring(5,7)} - {postObject.createdAt.substring(0,4)}</div> */}
         </div>
         </div>
         {authState.username === postObject.username &&
@@ -92,6 +92,10 @@ const deletePost = (id) => {
         {authState.username === postObject.username &&
          <button id="editPost" onClick={() => {}}>Edit</button> 
         }
+        {/* <div className="likeCountIcon">
+          <label> {postObject.Likes.length}</label>
+          <img className="likeIcon" src="/liked.png" alt=" " onClick={() => {likeAPost(postObject.id)}}/>
+        </div> */}
       </div>
       <div className="rightSide">
         <div className="addCommentContainer">
