@@ -33,6 +33,9 @@ function App() {
       .then((response) => {
         if (response.data.error) {
           setAuthState({ ...authState, status: false });
+          if(window.location.pathname !== '/login' && window.location.pathname !== '/register' ){
+            window.location.replace('/login')
+          }
         } else {
           setAuthState({
             username: response.data.username,

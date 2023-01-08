@@ -14,6 +14,18 @@ router.get("/byId/:id", async (req, res) => {
   res.json(post);
 });
 
+router.delete("/:id", validateToken, async (req, res) => {
+  const id = req.params.id;
+
+  await Posts.destroy({
+    where: {
+      id: id,
+    },
+  });
+
+  res.json("DELETED SUCCESSFULLY");
+});
+
 router.post("/", validateToken, async (req, res) => {
   const post = req.body;
   await Posts.create(post);

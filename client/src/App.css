@@ -206,6 +206,19 @@ span {
   margin-left: 50px;
 }
 
+.leftSide button {
+  width: 200px;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  color: #0d1117;
+  font-size: medium;
+  font-weight: 600;
+  background-color: rgba(201, 89, 89, 0.726);
+  margin-top: -130px;
+  margin-left: 400px;
+}
+
 .rightSide {
   flex: 50%;
   height: calc(100vh - 70px);
