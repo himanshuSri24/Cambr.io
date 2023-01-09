@@ -18,10 +18,16 @@ function Register() {
   });
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/auth", data).then(() => {
-      console.log(data);
-      history("/login")
-    });
+    axios.post("http://localhost:3001/auth", data).then((response) => {
+      if(response.data.error) {
+        alert(response.data.error);
+        window.location.reload()
+      }
+      else{
+          console.log(data);
+        history("/login")
+      }
+  });
   };
 
   return (

@@ -7,6 +7,12 @@ const { sign } = require("jsonwebtoken");
 
 router.post("/", async (req, res) => {
   const { username, password } = req.body;
+  const user = await Users.findOne({ where: { username: username } });
+
+  if (user) {
+    res.json({ error: "User Already Exists" });
+  }
+  else{
   bcrypt.hash(password, 10).then((hash) => {
     Users.create({
       username: username,
@@ -14,7 +20,7 @@ router.post("/", async (req, res) => {
     });
     res.json("User created successfully");
   });
-});
+}});
 
 router.get("/checkLogin", validateToken, (req, res) => {
   res.json(req.user);
