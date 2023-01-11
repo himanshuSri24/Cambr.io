@@ -5,6 +5,7 @@ import Post from "./pages/Post";
 import CreatePost from "./pages/CreatePost"
 import Register from "./pages/Register"
 import Login from "./pages/Login"
+import Profile from "./pages/Profile"
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
 import { AuthContext } from "./helpers/AuthContext";
 import { useState, useEffect } from "react";
@@ -76,6 +77,7 @@ function App() {
           <Route path="/post/:id" element = {<Post/>} />
           <Route path="/login" element = {<Login/>} />
           <Route path="/register" element = {<Register/>} />
+          <Route path="/profile/:id" element = {<Profile/>} />
         </Routes>
       </Router>
       </AuthContext.Provider>

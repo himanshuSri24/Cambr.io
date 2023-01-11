@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "12345678",
-    "database": "learnMERN",
+    "database": "learnmern",
     "host": "localhost",
     "dialect": "mysql"
   },
