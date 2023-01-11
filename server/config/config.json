@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "Eytd@4460",
-    "database": "Cambrio",
+    "password": "12345678",
+    "database": "learnmern",
     "host": "localhost",
     "dialect": "mysql"
   },
