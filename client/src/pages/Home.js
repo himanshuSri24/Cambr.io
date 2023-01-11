@@ -42,22 +42,22 @@ function Home() {
   };  
 
   return (
-    <div className="postList">{listOfPosts.map((value, key) => {
+    <div className="postLists">{listOfPosts.slice(0).reverse().map((value, key) => {
        
       return (
-          <>
-          <div className="likeCountIcon">
-          <label> {value.Likes.length}</label>
-          <img className="likeIcon" src="/liked.png" alt=" " onClick={() => {likeAPost(value.id)}}/>
-          </div>
+          <div>
           <div className="post">
             <div className="footer" onClick={() => {navigate(`/profile/${value.username}`)}}>{value.username}</div>
             <div className="body"  onClick={() => {navigate(`/post/${value.id}`)}}>{value.postText}</div>
             {/* <div className="title"> {value.title} </div> */}
             <div className="dateTime">{value.createdAt.substring(8,10)} - {value.createdAt.substring(5,7)} - {value.createdAt.substring(0,4)}</div>
           </div>
+          <div className="likeCountIcon">
+          <label> {value.Likes.length}</label>
+          <img className="likeIcon" src="/liked.png" alt=" " onClick={() => {likeAPost(value.id)}}/>
+          </div>
           
-          </>
+          </div>
           
         );
       })}</div>

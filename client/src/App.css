@@ -13,6 +13,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #0d1117;
+  min-height: 100vh;
 }
 
 .logout {
@@ -546,4 +547,13 @@ font-size: medium;
 font-weight: 600;
 margin-top: 30px;
 margin-bottom: 50px;
+}
+
+
+/* Profile page */
+
+.postLists {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 4vw;
 }
