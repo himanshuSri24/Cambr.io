@@ -85,13 +85,15 @@ const deletePost = (id) => {
           {/* <div id="dateTime">{postObject.createdAt.substring(8,10)} - {postObject.createdAt.substring(5,7)} - {postObject.createdAt.substring(0,4)}</div> */}
         </div>
         </div>
+        <div className="postButtons">
         {authState.username === postObject.username &&
-                <button onClick={() => {deletePost(postObject.id)}}>Delete</button>
+                <button id="delPost" onClick={() => {deletePost(postObject.id)}}>Delete</button>
         }
         
         {authState.username === postObject.username &&
          <button id="editPost" onClick={() => {}}>Edit</button> 
         }
+        </div>
         {/* <div className="likeCountIcon">
           <label> {postObject.Likes.length}</label>
           <img className="likeIcon" src="/liked.png" alt=" " onClick={() => {likeAPost(postObject.id)}}/>

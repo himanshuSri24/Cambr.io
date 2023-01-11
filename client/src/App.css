@@ -230,7 +230,7 @@ span {
 }
 
 .leftSide {
-  /* flex: 50%; */
+  flex: 50%;
   height: calc(100vh - 70px);
   display: grid;
   margin-top: 90px;
@@ -246,27 +246,48 @@ span {
   font-size: medium;
   font-weight: 600;
   background-color: #c95959b9;
-  margin-left: 400px;
-  margin-top: -30px;
+  /* margin-left: 400px; */
+  /* margin-top: -30px; */
   transition: 0.25s;
 }
 
-.leftSide button:hover {
+.postButtons {
+  position: relative;
+}
+
+
+/* .leftSide button :hover {
   margin-left: 150px;
   width: 450px;
   z-index: 20;
   background-color: #c95959;
-}
+} */
 
 #editPost {
-  margin-top: -177.5px;
-  margin-left: 150px;
+  /* margin-top: -177.5px; */
+  /* margin-left: 150px; */
+  position: absolute;
+  bottom: 20%;
+  left: 12%;
   background-color: #22f1bf;
   
 }
 
 #editPost:hover {
   width: 450px;
+  z-index: 20;
+}
+
+#delPost {
+  position: absolute;
+  bottom: 20%;
+  right: 12%;
+}
+
+#delPost:hover {
+  width: 450px;
+  z-index: 20;
+  background-color: #c95959;
 }
 
 .rightSide {

@@ -1,18 +1,22 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom"
+import {useLocation, useNavigate, useParams} from "react-router-dom"
 
-function Home() {
+function Profile() {
     const [listOfPosts, setListOfPosts] = useState([]);
     
+    let username = useLocation().pathname
+    const user = username.substring(9)
+    // console.log(user)
+
     let navigate = useNavigate()
 
   useEffect(() => {
-    axios.get("http://localhost:3001/posts").then((response) => {
+    axios.get(`http://localhost:3001/posts/${user}`).then((response) => {
       setListOfPosts(response.data);
     });
   }, []);
-
+// /*
   const likeAPost = (postId) => {
     axios
       .post(
@@ -40,7 +44,7 @@ function Home() {
         );
       });
   };  
-
+// */
   return (
     <div className="postList">{listOfPosts.map((value, key) => {
        
@@ -50,9 +54,9 @@ function Home() {
           <label> {value.Likes.length}</label>
           <img className="likeIcon" src="/liked.png" alt=" " onClick={() => {likeAPost(value.id)}}/>
           </div>
-          <div className="post">
-            <div className="footer" onClick={() => {navigate(`/profile/${value.username}`)}}>{value.username}</div>
-            <div className="body"  onClick={() => {navigate(`/post/${value.id}`)}}>{value.postText}</div>
+          <div className="post" onClick={() => {navigate(`/post/${value.id}`)}}>
+            <div className="footer">{value.username}</div>
+            <div className="body">{value.postText}</div>
             {/* <div className="title"> {value.title} </div> */}
             <div className="dateTime">{value.createdAt.substring(8,10)} - {value.createdAt.substring(5,7)} - {value.createdAt.substring(0,4)}</div>
           </div>
@@ -64,4 +68,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Profile
