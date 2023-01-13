@@ -6,7 +6,7 @@ const { validateToken } = require("../middleware/AuthMiddleware");
 const { sign } = require("jsonwebtoken");
 
 router.post("/", async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password,firstname, lastname, mob, collegemail, sem, branch } = req.body;
   const user = await Users.findOne({ where: { username: username } });
 
   if (user) {
@@ -17,6 +17,12 @@ router.post("/", async (req, res) => {
     Users.create({
       username: username,
       password: hash,
+      firstname: firstname,
+      lastname: lastname,
+      mob: mob,
+      collegemail: collegemail,
+      sem: sem,
+      branch: branch
     });
     res.json("User created successfully");
   });
