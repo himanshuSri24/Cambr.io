@@ -43,6 +43,7 @@ function Home() {
 
   return (
     <div className="postList">{listOfPosts.map((value, key) => {
+      console.log(value)
        
       return (
           <>

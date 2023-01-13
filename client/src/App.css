@@ -7,6 +7,7 @@
   align-items: center;
   flex-direction: column;
   font-family: 'Josefin Sans', cursive;
+	color: #7371ff;
 }
 
 body {
@@ -547,3 +548,29 @@ font-weight: 600;
 margin-top: 30px;
 margin-bottom: 50px;
 }
+
+.details h1 {
+  width: 100%;
+	color: #7371ff;
+	font-size: 42px;
+	margin: 40px auto;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+
+/* Newer CSS, I know it's not organized well */
+
+.details h2{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#sep {
+  margin: 50px;
+}
+
+/* div css */
+
+/* end of div css */

@@ -32,6 +32,13 @@ router.get("/checkLogin", validateToken, (req, res) => {
   res.json(req.user);
 });
 
+
+router.get("/prof/:username", async (req, res) => {
+  const user = req.params.username;
+  const posts = await Users.findOne ({where: { username: user } });
+  res.json(posts);
+})
+
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
@@ -50,7 +57,5 @@ router.post("/login", async (req, res) => {
   });
 }
 });
-
-
 
 module.exports = router;

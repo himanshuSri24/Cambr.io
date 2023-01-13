@@ -4,7 +4,7 @@ import {useLocation, useNavigate, useParams} from "react-router-dom"
 
 function Profile() {
     const [listOfPosts, setListOfPosts] = useState([]);
-    
+    const [userDetails, setUserDetails] = useState([]); 
     let username = useLocation().pathname
     const user = username.substring(9)
     // console.log(user)
@@ -14,6 +14,11 @@ function Profile() {
   useEffect(() => {
     axios.get(`http://localhost:3001/posts/${user}`).then((response) => {
       setListOfPosts(response.data);
+    })
+    axios.get(`http://localhost:3001/auth/prof/${user}`).then((response) => {
+      setUserDetails(response.data);
+      // console.log('Something');
+      // console.log(userDetails)
     });
   }, []);
 // /*
@@ -45,7 +50,24 @@ function Profile() {
       });
   };  
 // */
+
+console.log(userDetails)
   return (
+    <>
+    <div className="details">
+      <h1>{user}</h1>
+      {/* <div> */}
+        <h2>
+        <p>First Name : {userDetails.firstname}</p>
+        <p>Last Name: {userDetails.lastname}</p>
+        <p>Semester : {userDetails.sem}</p>
+        <p>Mail ID : {userDetails.collegemail}</p>
+        <p>Phone Number : {userDetails.mob}</p>
+        <div id="sep"></div>
+        <h1>Posts by {userDetails.username}</h1>        
+        </h2>
+      {/* </div> */}
+    </div>
     <div className="postList">{listOfPosts.map((value, key) => {
        
       return (
@@ -65,6 +87,7 @@ function Profile() {
           
         );
       })}</div>
+  </>
   )
 }
 
