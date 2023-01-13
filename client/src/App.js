@@ -51,7 +51,7 @@ function App() {
       <AuthContext.Provider value={{ authState, setAuthState }}>
       <Router>
         <div className = "navbar">
-          <img src="/logo.png" alt = 'CAMBRIO' id="logo"/>
+          <img src="/logo.png" alt = 'CAMBRIO' id="logo" onClick={() => {window.location.replace('/')}}/>
           <div>
           {authState.status && 
             <>
