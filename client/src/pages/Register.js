@@ -13,7 +13,8 @@ function Register() {
     mob: "",
     collegemail: "",
     sem: "",
-    branch: ""
+    branch: "",
+    usn: ""
   };
 
   let history = useNavigate();
@@ -23,10 +24,11 @@ function Register() {
     password: Yup.string().min(4).max(20).required(),
     firstname: Yup.string().min(2).max(30).required("Your first name is required").matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field "),
     lastname: Yup.string().min(2).max(30).required("Your last name is required").matches(/^[aA-zZ]+$/, "Only alphabets are allowed for this field "),
-    mob: Yup.string().min(10).max(10).required("Your mobile number is required").matches(/^[0-9]+$/, "Invalid mobile number"),
+    mob: Yup.string().min(10).max(10).required().matches(/^[0-9]+$/, "Invalid mobile number"),
     collegemail: Yup.string().email().required("Your college mail id is required"),
-    sem: Yup.number().min(1).max(8),
-    branch: Yup.string().max(5),
+    sem: Yup.number("It should be a number").min(1).max(8),
+    branch: Yup.string().max(5).required().matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field "),
+    usn: Yup.string().min(10).max(10)
   });
 
 
@@ -55,7 +57,7 @@ function Register() {
           {/* <label>Username: </label> */}
           <ErrorMessage name="username" component="span" />
           <Field
-            autocomplete="off"
+            // autoComplete="off"
             id="inputCreatePost"
             name="username"
             placeholder="username"
@@ -64,7 +66,7 @@ function Register() {
           {/* <label>Password: </label> */}
           <ErrorMessage name="password" component="span" />
           <Field
-            autocomplete="off"
+            // autocomplete="off"
             type="password"
             id="inputCreatePost"
             name="password"
@@ -73,7 +75,7 @@ function Register() {
 
           <ErrorMessage name="firstname" component="span" />
           <Field
-            autocomplete="on"
+            // autocomplete="on"
             id="inputCreatePost"
             name="firstname"
             placeholder="first name"
@@ -81,7 +83,7 @@ function Register() {
 
           <ErrorMessage name="lastname" component="span" />
           <Field
-            autocomplete="on"
+            // autocomplete="off"
             id="inputCreatePost"
             name="lastname"
             placeholder="last name"
@@ -89,7 +91,7 @@ function Register() {
 
           <ErrorMessage name="mob" component="span" />
           <Field
-            autocomplete="on"
+            // autocomplete="on"
             id="inputCreatePost"
             name="mob"
             placeholder="mobile number"
@@ -97,7 +99,7 @@ function Register() {
 
           <ErrorMessage name="collegemail" component="span" />
           <Field
-            autocomplete="on"
+            // autocomplete="on"
             id="inputCreatePost"
             name="collegemail"
             placeholder="college mail id"
@@ -105,7 +107,7 @@ function Register() {
 
           <ErrorMessage name="sem" component="span" />
           <Field
-            autocomplete="on"
+            // autocomplete="on"
             id="inputCreatePost"
             name="sem"
             placeholder="semester"
@@ -113,10 +115,18 @@ function Register() {
 
           <ErrorMessage name="branch" component="span" />
           <Field
-            autocomplete="on"
+            // autocomplete="on"
             id="inputCreatePost"
             name="branch"
             placeholder="branch"
+          />
+
+          <ErrorMessage name="usn" component="span" />
+          <Field
+            // autocomplete="on"
+            id="inputCreatePost"
+            name="usn"
+            placeholder="usn"
           />
 
           <button type="submit"> Register</button>

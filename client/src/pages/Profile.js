@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import {useLocation, useNavigate, useParams} from "react-router-dom"
+import GoToTop from "../GoToTop"
 
 function Profile() {
     const [listOfPosts, setListOfPosts] = useState([]);
@@ -58,11 +59,11 @@ console.log(userDetails)
       <h1>{user}</h1>
       {/* <div> */}
         <h2>
-        <p>First Name : {userDetails.firstname}</p>
-        <p>Last Name: {userDetails.lastname}</p>
+        <p>Name : {userDetails.firstname} {userDetails.lastname}</p>
         <p>Semester : {userDetails.sem}</p>
         <p>Mail ID : {userDetails.collegemail}</p>
         <p>Phone Number : {userDetails.mob}</p>
+        <p>Branch : {userDetails.branch}</p>
         <div id="sep"></div>
         <h1>Posts by {userDetails.username}</h1>        
         </h2>
@@ -87,6 +88,7 @@ console.log(userDetails)
           
         );
       })}</div>
+      <GoToTop/>
   </>
   )
 }

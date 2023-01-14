@@ -11,7 +11,8 @@ function Post() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const { authState } = useContext(AuthContext);
-  
+  const [commentEdited, setCommentEdited] = useState(false);
+
   useEffect(() => {
     axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);
@@ -21,7 +22,7 @@ function Post() {
     axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
       setComments(response.data);
     });
-  }, [id]);
+  }, [id, commentEdited]);
 
   const addComment = () => {
     if(newComment.length !== 0){
@@ -75,6 +76,48 @@ const deletePost = (id) => {
     });
 };
 
+const editPost = (option) => {
+  
+    let newPostText = prompt("Enter New Text:");
+    if(newPostText){
+    axios.put(
+      "http://localhost:3001/posts/postText",
+      {
+        newText: newPostText,
+        id: id,
+      },
+      {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      }
+    );
+
+    setPostObject({ ...postObject, postText: newPostText });
+    }
+};
+
+const editComment = (option) => {
+  
+  let newCommentText = prompt("Enter New Text:");
+  if(newCommentText){
+  axios.put(
+    "http://localhost:3001/comments/commentText",
+    {
+      newText: newCommentText,
+      id: option,
+    },
+    {
+      headers: { accessToken: localStorage.getItem("accessToken") },
+    })
+  let newCommentList = [...comments];
+  newCommentList[option] = newCommentText
+  setComments(newCommentList);
+  if(commentEdited){
+    setCommentEdited(false)
+  }else{
+    setCommentEdited(true)
+  }
+}
+};
 
   return (
     <div className="postPage">
@@ -91,7 +134,10 @@ const deletePost = (id) => {
         }
         
         {authState.username === postObject.username &&
-         <button id="editPost" onClick={() => {}}>Edit</button> 
+         <button id="editPost"  onClick={() => {
+          if (authState.username === postObject.username) {
+            editPost("body");
+          }}}>Edit</button> 
         }
         </div>
         {/* <div className="likeCountIcon">
@@ -123,7 +169,7 @@ const deletePost = (id) => {
                 </div>
                 
                 {authState.username === comment.username &&
-                <button id="editComment" onClick={() => {}}>Edit</button>
+                <button id="editComment" onClick={() => {editComment(comment.id)}}>Edit</button>
                 }
                 {authState.username === comment.username &&
                 <button className="delComment" onClick={() => {deleteComment(comment.id)}}>X</button>

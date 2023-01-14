@@ -38,13 +38,16 @@ module.exports = (sequelize, DataTypes) => {
       
       sem: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
       
       branch: {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      usn: {
+        type: DataTypes.STRING,
+      }
     });
   
     Users.associate = (models) => {

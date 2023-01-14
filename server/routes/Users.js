@@ -6,7 +6,7 @@ const { validateToken } = require("../middleware/AuthMiddleware");
 const { sign } = require("jsonwebtoken");
 
 router.post("/", async (req, res) => {
-  const { username, password,firstname, lastname, mob, collegemail, sem, branch } = req.body;
+  const { username, password,firstname, lastname, mob, collegemail, sem, branch, usn } = req.body;
   const user = await Users.findOne({ where: { username: username } });
 
   if (user) {
@@ -22,7 +22,8 @@ router.post("/", async (req, res) => {
       mob: mob,
       collegemail: collegemail,
       sem: sem,
-      branch: branch
+      branch: branch,
+      usn: usn
     });
     res.json("User created successfully");
   });
@@ -57,5 +58,25 @@ router.post("/login", async (req, res) => {
   });
 }
 });
+
+
+router.put("/changepassword", validateToken, async (req, res) => {
+  const { oldPassword, newPassword } = req.body;
+  const user = await Users.findOne({ where: { username: req.user.username } });
+
+  bcrypt.compare(oldPassword, user.password).then(async (match) => {
+    if (!match) res.json({ error: "Wrong Password Entered!" });
+
+    bcrypt.hash(newPassword, 10).then((hash) => {
+      Users.update(
+        { password: hash },
+        { where: { username: req.user.username } }
+      );
+      res.json("SUCCESS");
+    });
+  });
+});
+
+
 
 module.exports = router;

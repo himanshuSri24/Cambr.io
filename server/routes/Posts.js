@@ -23,6 +23,13 @@ router.get("/byId/:id", async (req, res) => {
   res.json(post);
 });
 
+
+router.put("/postText", validateToken, async (req, res) => {
+  const { newText, id } = req.body;
+  await Posts.update({ postText: newText }, { where: { id: id } });
+  res.json(newText);
+});
+
 router.delete("/:id", validateToken, async (req, res) => {
   const id = req.params.id;
 

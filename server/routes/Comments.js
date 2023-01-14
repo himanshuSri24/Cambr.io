@@ -29,4 +29,11 @@ router.post("/", validateToken, async (req, res) => {
   res.json(newComment);
 }); 
 
+router.put("/commentText", validateToken, async (req, res) => {
+  const { newText, id } = req.body;
+  await Comments.update({ commentBody: newText }, { where: { id: id } });
+  res.json(newText);
+});
+
+
 module.exports = router;
